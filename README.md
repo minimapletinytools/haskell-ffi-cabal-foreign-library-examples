@@ -2,7 +2,7 @@
 
 This repository contains a Cabal 2.0 project showing how to build a Haskell library to use in c/c++ using the new [foreign-library](https://cabal.readthedocs.io/en/latest/developing-packages.html#foreign-libraries) feature. The `foreign-library` feature greatly simplifies the process of creating Haskell libraries for use by other languages.
 
-The `lens` and `deepseq` packages are included primarily to test out dependencies. The example contains code is intended to test features _I_ need for my own projects, in particular [🥔 PuzzleScript](https://github.com/pdlla/PotatoPuzzleScript).
+The `lens` and `deepseq` packages are included primarily to test out dependencies. The example contains code is intended to test features _I_ need for my own projects, in particular [🥔 PuzzleScript](https://github.com/pdlla/PotatoPuzzleScript). I would love to merge a PR including more relevant examples 😘.
 
 ## Usage
 
