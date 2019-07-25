@@ -8,7 +8,7 @@ The `lens` and `deepseq` packages are included mainly as a test case for depende
 
 `make run`
 
-I have only tested this on Mac. You may need to fadangle it a little on Linux/Win such that it can locate the library.
+It was tested on Mac and Linux (Ubuntu 19.04 with cabal 2.4 and ghc 8.6.5). You may need to fadangle it a little on Linux/Win such that it can locate the library.
 
 ## Walkthrough
 
