@@ -1,4 +1,4 @@
-all: potatolib
+all: capp
 
 potatolib: src/Potato.hs potato.cabal
 	cabal configure && cabal build

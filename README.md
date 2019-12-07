@@ -8,7 +8,7 @@ The `lens` and `deepseq` packages are included mainly as a test case for depende
 
 `make run`
 
-It was tested on Mac and Linux (Ubuntu 19.04 with cabal 2.4 and ghc 8.6.5). You may need to fadangle it a little on Linux/Win such that it can locate the library.
+It was tested on Mac and Linux (Ubuntu 19.04 with cabal 2.4 and ghc 8.6.5).
 
 ## Walkthrough
 
@@ -51,7 +51,7 @@ g++ -g -Wall potatomain.cpp -o $@ \
 -L./
 ```
 
-If your `potatomain.cpp` is using methods from the library directly, then you will need to add the flags `-I../dist/build/potato/potato-tmp` for `Potato_stub.h` and something like `-I/usr/local/lib/ghc-8.4.4/include/` for `HsFFI.h`.
+As mentioned earlier, if you want your `capp/potatomain.cpp` to use methods from the Haskell library directly instead of calling through `csrc/potato.h`, then you will need to add the flags `-I../dist/build/potato/potato-tmp` for `Potato_stub.h` and something like `-I/usr/local/lib/ghc-8.4.4/include/` for `HsFFI.h`.
 
 Finally, the makefile in the root directory runs `cabal configure && cabal build` and then calls `make` inside of `capp`. `make run` runs the app it compiled in `capp`.
 
