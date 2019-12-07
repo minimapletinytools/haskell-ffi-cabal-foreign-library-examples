@@ -1,9 +1,9 @@
 all: potatolib
 
-potatolib: dist src/Potato.hs potato.cabal
+potatolib: src/Potato.hs potato.cabal
 	cabal configure && cabal build
 
-capp: capp potatolib
+capp: potatolib
 	cd capp && make
 
 run: capp
