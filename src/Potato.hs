@@ -1,24 +1,23 @@
-{-# LANGUAGE CPP                         #-}
+{-# LANGUAGE CPP                      #-}
+{-# LANGUAGE DeriveAnyClass           #-}
+{-# LANGUAGE DeriveGeneric            #-}
 {-# LANGUAGE ForeignFunctionInterface #-}
-{-# LANGUAGE TemplateHaskell #-}
-{-# LANGUAGE DeriveAnyClass #-}
-{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE TemplateHaskell          #-}
+{-# OPTIONS_GHC -fno-warn-unused-top-binds #-}
+
 module Potato (
   basicPotato
 ) where
 
 
-import Foreign.C.Types
-import Foreign.Ptr
-import Foreign.ForeignPtr
-import Foreign.Marshal.Alloc
-import Foreign.Storable
-import Foreign.StablePtr
+import           Foreign.C.Types
+import           Foreign.Ptr
+import           Foreign.StablePtr
 
-import Control.Lens
-import Control.DeepSeq
-import GHC.Generics (Generic)
-import Data.Int (Int32)
+import           Control.DeepSeq
+import           Control.Lens
+import           Data.Int          (Int32)
+import           GHC.Generics      (Generic)
 
 foreign import ccall "dynamic" mkFun :: FunPtr (CInt -> CInt) -> (CInt -> CInt)
 
@@ -34,6 +33,7 @@ instance Show Complicated where
   show (Complicated f1' f2' f3') = "Complicated:\n\t" ++ show f1' ++ "\n\t" ++ show f2' ++ "\n\tf3(0)=" ++ show (f3' 0)
 
 
+newComplicated :: Complicated
 newComplicated = Complicated {
   _f1 = SubComplicated 5 0.5 "hi",
   _f2 = [0.1,0.2,5],
