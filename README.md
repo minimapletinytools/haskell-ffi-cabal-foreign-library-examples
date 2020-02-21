@@ -32,6 +32,8 @@ foreign-library potato
   default-language:    Haskell2010
 ```
 
+Note, to support stack pipeline, this is done using the `verbatim` field in `package.yaml`.
+
 Please see [cabal docs](https://cabal.readthedocs.io/en/latest/developing-packages.html#foreign-libraries) for a more thorough description explaining the meaning of each field. The important detail here is
 
 ```
@@ -51,15 +53,17 @@ g++ -g -Wall potatomain.cpp -o $@ \
 -L./
 ```
 
-As mentioned earlier, if you want your `capp/potatomain.cpp` to use methods from the Haskell library directly instead of calling through `csrc/potato.h`, then you will need to add the flags `-I../dist/build/potato/potato-tmp` for `Potato_stub.h` and something like `-I/usr/local/lib/ghc-8.4.4/include/` for `HsFFI.h`.
+As mentioned earlier, if you want your `capp/potatomain.cpp` to use methods from the Haskell library directly instead of calling through `csrc/potato.h`, then you will need to add the flags `-I../dist/build/potato/potato-tmp` for `Potato_stub.h` and something like `-I/usr/local/lib/ghc-8.4.4/include/` for `HsFFI.h`. I don't recommend this since it's unclear to me where to fetch these dependencies from in a build pipeline.
 
-Finally, the makefile in the root directory runs `cabal configure && cabal build` then copies the compiled library into the `capp` folder. Then it calls `make` inside of `capp`. `make run` runs the app it compiled in `capp`.
+Finally, the makefile in the root directory runs `stack build` and copies the compiled library into the `capp` folder. Then it calls `make` inside of `capp`. `make run` runs the app it compiled in `capp`.
 
-## Stack Integration
-This seems to work fine with the latest version of stack. You can do `make usingstack` in the root directory to try it out. It will copy the output the `capp` folder and you can run `make run` inside the `capp` directory.
+## Cabal
+`make usingcabal` will do the same thing with cabal instead of stack. It uses a different .cabal file but you could probably make it work with the stack generated one too.
+
+## Real World Examples (AKA shameless self promotion)
+This example was made as an excercise for the [AnimalClub](https://github.com/pdlla/animalclub) haskell library which is called by rust in [goatbreeder](https://github.com/pdlla/goatbreeder).
 
 ## THX
-
 I used [this guide](https://ro-che.info/articles/2017-07-26-haskell-library-in-c-project) as a starting point which includes links to many other resources I found helpful so I won't list them here. The guide contains a script for gathering the scattered libraries but I didn't seem to need it here. As far as I can tell, Cabal 2.0 will package everything that's needed into a single shared library.
 
 Enjoy!

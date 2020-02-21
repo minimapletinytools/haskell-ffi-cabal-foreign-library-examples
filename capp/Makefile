@@ -30,6 +30,6 @@ run: potatomain
 	./potatomain
 
 clean:
-	rm -rf *.o *.a potatomain
+	rm -rf *.o *.a *.dSYM *.dylib potatomain 
 
 .PHONY: clean all run
