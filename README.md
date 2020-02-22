@@ -2,7 +2,7 @@
 
 This repository contains a Cabal 2.0 project showing how to build a haskell library to use in c/c++ using the new [foreign-library](https://cabal.readthedocs.io/en/latest/developing-packages.html#foreign-libraries) feature. The `foreign-library` feature greatly simplifies the process of creating haskell libraries for use by other languages.
 
-The `lens` and `deepseq` packages are included mainly as a test case for dependencies. The example contains code that is intended to test features _I_ need for my own projects, in particular [🥔 PuzzleScript](https://github.com/pdlla/PotatoPuzzleScript). I would love to merge a PR including more relevant examples 😘.
+The `lens` and `deepseq` packages are included mainly as a test case for dependencies. The example contains code that is intended to test features _I_ need for my own projects, in particular [AnimalClub](https://github.com/pdlla/animalclub). I would love to merge a PR including more relevant examples 😘.
 
 ## Usage
 
@@ -59,9 +59,6 @@ Finally, the makefile in the root directory runs `stack build` and copies the co
 
 ## Cabal
 `make usingcabal` will do the same thing with cabal instead of stack. It uses a different .cabal file but you could probably make it work with the stack generated one too.
-
-## Real World Examples (AKA shameless self promotion)
-This example was made as an excercise for the [AnimalClub](https://github.com/pdlla/animalclub) haskell library which is called by rust in [goatbreeder](https://github.com/pdlla/goatbreeder).
 
 ## THX
 I used [this guide](https://ro-che.info/articles/2017-07-26-haskell-library-in-c-project) as a starting point which includes links to many other resources I found helpful so I won't list them here. The guide contains a script for gathering the scattered libraries but I didn't seem to need it here. As far as I can tell, Cabal 2.0 will package everything that's needed into a single shared library.

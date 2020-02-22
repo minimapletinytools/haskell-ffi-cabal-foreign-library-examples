@@ -9,7 +9,7 @@ potatomain: potatomain.cpp
 # set linker path on linux
 # not sure why I need clang++ or -stdlib=libc++ but it fixes some missing symbol errors
 ifeq ($(UNAME), Linux)
-	g++ -g -Wall potatomain.cpp -o $@ \
+	clang++ -g -Wall potatomain.cpp -o $@ \
 	-I../csrc \
 	-stdlib=libc++
 	-Wl,-rpath='$$ORIGIN' \
