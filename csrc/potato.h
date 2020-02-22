@@ -1,7 +1,7 @@
 #pragma once
 
-void potatoInit(void);
+extern "C" void potatoInit(void);
 
-void potatoExit(void);
+extern "C" void potatoExit(void);
 
-void test(void);
+extern "C" void test(void);

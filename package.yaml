@@ -1,0 +1,55 @@
+name:                potato
+version:             0.1.0.0
+github:              "pdlla/haskell-ffi-cabal-foreign-library-examples"
+license:             BSD3
+author:              "Peter Lu"
+maintainer:          "chippermonky@gmail.com"
+copyright:           "2018 Peter Lu"
+
+extra-source-files:
+- README.md
+- CHANGELOG.md
+
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on Github at <https://github.com/pdlla/haskell-ffi-cabal-foreign-library-examples#readme>
+
+ghc-options:
+- -Wall
+- -Wcompat
+- -Wincomplete-record-updates
+- -Wincomplete-uni-patterns
+- -Wredundant-constraints
+
+dependencies:
+- base >= 4.7 && < 5
+- deepseq
+- lens
+
+library:
+  source-dirs: src
+
+# hpack does not support foreign-library yet
+# please see comments in verbatim string on how to appropriately set fields
+verbatim: |
+  foreign-library potato
+    type:                native-shared
+
+    if os(Windows)
+      options: standalone
+      mod-def-file: PotatoLib.def
+
+    other-modules:       Potato
+    build-depends:
+      base >=4.7 && <5
+      , lens == 4.*
+      , deepseq == 1.4.*
+    hs-source-dirs:      src
+    c-sources:           csrc/potato.cpp
+    default-language:    Haskell2010

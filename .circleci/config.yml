@@ -19,7 +19,7 @@ jobs:
           command: make run
       - save_cache:
           name: Cache Dependencies
-          key: potato-v1-{{ checksum "stack.yaml" }}-{{ checksum "package.yaml" }}
+          key: potato-{{ checksum "stack.yaml" }}-{{ checksum "package.yaml" }}
           paths:
             - "/root/.stack"
             - ".stack-work"
